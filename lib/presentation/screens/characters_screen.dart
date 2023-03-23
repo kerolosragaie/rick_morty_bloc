@@ -5,8 +5,11 @@ class CharactersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("test"),
+      ),
+      body: const Text(
         "data",
         style: TextStyle(fontSize: 80, color: Colors.red),
       ),

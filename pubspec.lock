@@ -130,21 +130,13 @@ packages:
     source: hosted
     version: "0.7.8"
   debug_logger:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: debug_logger
       sha256: "1980e34d2f18fa228ca777ca5b9b5dd78ca3a39576ba2c68cbda09053e24d377"
       url: "https://pub.dev"
     source: hosted
     version: "0.0.23"
-  dio:
-    dependency: "direct main"
-    description:
-      name: dio
-      sha256: "3e5c4a94d112540d0c9a6b7f3969832e1604eb8cde0f88d0808382f9f632100b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -368,14 +360,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
-  retrofit:
-    dependency: "direct main"
-    description:
-      name: retrofit
-      sha256: "5eedbd8f73697f190dabc88520e0bcf2d3b2d9b9ad5c837f1dbb3ee6172d7709"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

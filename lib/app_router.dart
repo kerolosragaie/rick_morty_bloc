@@ -6,7 +6,7 @@ class AppRouter {
   Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case CHARACTERS_SCREEN:
-        return MaterialPageRoute(builder: (_) => const CharactersScreen());
+        return MaterialPageRoute(builder: (_) => CharactersScreen());
     }
     return null;
   }

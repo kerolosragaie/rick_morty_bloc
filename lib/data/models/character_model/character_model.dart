@@ -1,9 +1,9 @@
 import 'info.dart';
-import 'result.dart';
+import 'result_char.dart';
 
 class CharacterModel {
   Info? info;
-  List<Result>? results;
+  List<ResultChar>? results;
 
   CharacterModel({this.info, this.results});
 
@@ -13,7 +13,7 @@ class CharacterModel {
           ? null
           : Info.fromJson(json['info'] as Map<String, dynamic>),
       results: (json['results'] as List<dynamic>?)
-          ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ResultChar.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }

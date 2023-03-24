@@ -1,28 +1,28 @@
-class Result {
+class ResultEpisode {
   int? id;
   String? name;
-  String? type;
-  String? dimension;
-  List<String>? residents;
+  String? airDate;
+  String? episode;
+  List<String>? characters;
   String? url;
   DateTime? created;
 
-  Result({
+  ResultEpisode({
     this.id,
     this.name,
-    this.type,
-    this.dimension,
-    this.residents,
+    this.airDate,
+    this.episode,
+    this.characters,
     this.url,
     this.created,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultEpisode.fromJson(Map<String, dynamic> json) => ResultEpisode(
         id: json['id'] as int?,
         name: json['name'] as String?,
-        type: json['type'] as String?,
-        dimension: json['dimension'] as String?,
-        residents: json['residents'] as List<String>?,
+        airDate: json['air_date'] as String?,
+        episode: json['episode'] as String?,
+        characters: json['characters'] as List<String>?,
         url: json['url'] as String?,
         created: json['created'] == null
             ? null
@@ -32,9 +32,9 @@ class Result {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'type': type,
-        'dimension': dimension,
-        'residents': residents,
+        'air_date': airDate,
+        'episode': episode,
+        'characters': characters,
         'url': url,
         'created': created?.toIso8601String(),
       };

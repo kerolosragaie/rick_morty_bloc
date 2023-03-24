@@ -1,7 +1,7 @@
 import 'location.dart';
 import 'origin.dart';
 
-class Result {
+class ResultChar {
   int? id;
   String? name;
   String? status;
@@ -11,11 +11,11 @@ class Result {
   Origin? origin;
   Location? location;
   String? image;
-  List<String>? episode;
+  List<dynamic>? episode;
   String? url;
   DateTime? created;
 
-  Result({
+  ResultChar({
     this.id,
     this.name,
     this.status,
@@ -30,7 +30,7 @@ class Result {
     this.created,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultChar.fromJson(Map<String, dynamic> json) => ResultChar(
         id: json['id'] as int?,
         name: json['name'] as String?,
         status: json['status'] as String?,
@@ -44,7 +44,7 @@ class Result {
             ? null
             : Location.fromJson(json['location'] as Map<String, dynamic>),
         image: json['image'] as String?,
-        episode: json['episode'] as List<String>?,
+        episode: json['episode'] as List<dynamic>?,
         url: json['url'] as String?,
         created: json['created'] == null
             ? null

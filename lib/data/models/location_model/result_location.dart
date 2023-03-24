@@ -1,28 +1,28 @@
-class Result {
+class ResultLocation {
   int? id;
   String? name;
-  String? airDate;
-  String? episode;
-  List<String>? characters;
+  String? type;
+  String? dimension;
+  List<String>? residents;
   String? url;
   DateTime? created;
 
-  Result({
+  ResultLocation({
     this.id,
     this.name,
-    this.airDate,
-    this.episode,
-    this.characters,
+    this.type,
+    this.dimension,
+    this.residents,
     this.url,
     this.created,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultLocation.fromJson(Map<String, dynamic> json) => ResultLocation(
         id: json['id'] as int?,
         name: json['name'] as String?,
-        airDate: json['air_date'] as String?,
-        episode: json['episode'] as String?,
-        characters: json['characters'] as List<String>?,
+        type: json['type'] as String?,
+        dimension: json['dimension'] as String?,
+        residents: json['residents'] as List<String>?,
         url: json['url'] as String?,
         created: json['created'] == null
             ? null
@@ -32,9 +32,9 @@ class Result {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'air_date': airDate,
-        'episode': episode,
-        'characters': characters,
+        'type': type,
+        'dimension': dimension,
+        'residents': residents,
         'url': url,
         'created': created?.toIso8601String(),
       };

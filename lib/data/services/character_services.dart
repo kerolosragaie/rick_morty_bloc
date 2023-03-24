@@ -11,9 +11,9 @@ class CharacterSeervices {
   /*
   Get all characters
   */
-  Future<List<ResultChar>> getAllCharacters() async {
-    final url = Uri.parse(BASE_URL + endPoint);
-    Response response = await get(url);
+  Future<List<ResultChar>> getAllCharacters({int page = 0}) async {
+    final uri = Uri.parse("$BASE_URL$endPoint?page=$page");
+    Response response = await get(uri);
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body);
       CharacterModel characterModel = CharacterModel.fromJson(body);

@@ -1,9 +1,9 @@
 import 'package:debug_logger/debug_logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_bloc/data/models/character_model/character_model.dart';
-import 'package:rick_morty_bloc/data/repository/character_repository.dart';
+import 'package:rick_morty_bloc/data/repositories/character_repository.dart';
 
-import '../../data/models/character_model/result_char.dart';
+import '../../../data/models/character_model/result_char.dart';
 
 part 'characters_state.dart';
 

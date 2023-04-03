@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rick_morty_bloc/bloc/cubit/characters_cubit.dart';
 import 'package:rick_morty_bloc/data/models/character_model/character_model.dart';
 import 'package:debug_logger/debug_logger.dart';
 import 'package:rick_morty_bloc/presentation/widgets/character_item.dart';
+
+import '../bloc/cubit/characters_cubit.dart';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});

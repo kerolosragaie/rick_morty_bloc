@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';
 
-import '../../constants/app_colors.dart';
+import '../../core/constants/app_colors.dart';
 
 class CharacterItem extends StatelessWidget {
   final ResultChar resultChar;

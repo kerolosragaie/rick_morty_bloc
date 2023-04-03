@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:debug_logger/debug_logger.dart';
 import 'package:http/http.dart';
-import 'package:rick_morty_bloc/constants/strings.dart';
+import 'package:rick_morty_bloc/core/constants/strings.dart';
 import 'package:rick_morty_bloc/data/models/character_model/character_model.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rick_morty_bloc/app_router.dart';
-import 'package:rick_morty_bloc/constants/app_colors.dart';
+import 'package:rick_morty_bloc/core/constants/app_colors.dart';
 import 'package:rick_morty_bloc/presentation/screens/screens.dart';
 
 void main() {

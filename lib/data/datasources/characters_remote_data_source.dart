@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'package:debug_logger/debug_logger.dart';
 import 'package:rick_morty_bloc/core/constants/api.dart';
 import 'package:rick_morty_bloc/core/errors/exception.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';
 import 'package:http/http.dart' as http;
 
 abstract class CharactersRemoteDataSource {
-  Future<List<ResultChar>> getAllCharacters();
+  Future<List<dynamic>> getAllCharacters();
   Future<ResultChar> getCharacter(int charId);
 }
 
@@ -14,13 +15,13 @@ class CharactersRemoteDataSourceImpl extends CharactersRemoteDataSource {
 
   CharactersRemoteDataSourceImpl({required this.client});
   @override
-  Future<List<ResultChar>> getAllCharacters() async {
-    final response = await client.get(Uri.parse("$BASE_URL/character"),
-        headers: {"Content-Type": "application/json"});
+  Future<List<dynamic>> getAllCharacters() async {
+    final response = await client.get(Uri.parse("$BASE_URL/character"));
     if (response.statusCode == 200) {
-      final decodedJson = json.decode(response.body) as List;
-      final List<ResultChar> charactersModels =
-          decodedJson.map((e) => ResultChar.fromJson(e)).toList();
+      final decodedJson = json.decode(response.body);
+
+      final List<dynamic> charactersModels =
+          decodedJson["results"].map((e) => ResultChar.fromJson(e)).toList();
       return charactersModels;
     } else {
       throw ServerException();

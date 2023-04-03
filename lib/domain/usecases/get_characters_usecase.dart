@@ -7,9 +7,9 @@ import '../../data/models/character_model/result_char.dart';
 class GetCharctersUseCase {
   final CharactersRepository charactersRepository;
 
-  GetCharctersUseCase({required this.charactersRepository});
+  GetCharctersUseCase(this.charactersRepository);
 
-  Future<Either<Failure, List<ResultChar>>> call() async {
+  Future<Either<Failure, List<dynamic>>> call() async {
     return await charactersRepository.getAllCharacters();
   }
 

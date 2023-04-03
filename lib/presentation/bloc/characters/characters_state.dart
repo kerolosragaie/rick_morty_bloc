@@ -12,7 +12,7 @@ class CharactersInitial extends CharactersState {}
 class LoadingState extends CharactersState {}
 
 class LoadedCharactersState extends CharactersState {
-  final List<ResultChar> characters;
+  final List<dynamic> characters;
 
   const LoadedCharactersState({required this.characters});
   @override

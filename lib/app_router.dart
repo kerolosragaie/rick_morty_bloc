@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:rick_morty_bloc/core/constants/routes.dart';
-import 'package:rick_morty_bloc/presentation/screens/screens.dart';
+part of 'main.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings routeSettings) {

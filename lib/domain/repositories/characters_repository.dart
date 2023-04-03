@@ -4,6 +4,6 @@ import 'package:dartz/dartz.dart';
 import '../../core/errors/failures.dart';
 
 abstract class CharactersRepository {
-  Future<Either<Failure, List<ResultChar>>> getAllCharacters();
+  Future<Either<Failure, List<dynamic>>> getAllCharacters();
   Future<Either<Failure, ResultChar>> getCharacter(int charId);
 }

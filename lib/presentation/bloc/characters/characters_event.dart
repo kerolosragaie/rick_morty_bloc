@@ -17,4 +17,4 @@ class GetCharacterEvent extends CharactersEvent {
   List<Object> get props => [character];
 }
 
-class RefreshCharactersEvent extends CharactersEvent {}
+class RefreshEvent extends CharactersEvent {}

@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rick_morty_bloc/app_router.dart';
 
 import 'package:rick_morty_bloc/main.dart';
 

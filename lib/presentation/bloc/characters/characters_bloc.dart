@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';
 import 'package:rick_morty_bloc/domain/usecases/get_characters_usecase.dart';
-
 import '../../../core/constants/failures.dart';
 import '../../../core/errors/failures.dart';
 
@@ -15,7 +14,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   CharactersBloc({required this.getCharctersUseCase})
       : super(CharactersInitial()) {
     on<CharactersEvent>((event, emit) async {
-      if (event is GetAllCharactersEvent || event is RefreshCharactersEvent) {
+      if (event is GetAllCharactersEvent || event is RefreshEvent) {
         emit(LoadingState());
         final data = await getCharctersUseCase.call();
         data.fold((failure) {

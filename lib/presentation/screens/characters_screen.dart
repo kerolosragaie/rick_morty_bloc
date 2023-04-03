@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty_bloc/data/models/character_model/character_model.dart';
-import 'package:rick_morty_bloc/presentation/widgets/character_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
 
-class CharactersScreen extends StatefulWidget {
+import '../widgets/character_item.dart';
+
+class CharactersScreen extends StatelessWidget {
   const CharactersScreen({super.key});
-
-  @override
-  State<CharactersScreen> createState() => _CharactersScreenState();
-}
-
-class _CharactersScreenState extends State<CharactersScreen> {
-  late CharacterModel characterModel;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +13,40 @@ class _CharactersScreenState extends State<CharactersScreen> {
       appBar: AppBar(
         title: const Text("test"),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 2 / 3,
-                    crossAxisSpacing: 1,
-                    mainAxisSpacing: 1),
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                padding: EdgeInsets.zero,
-                itemCount: characterModel.results!.length,
-                itemBuilder: (ctx, index) {
-                  return CharacterItem(
-                    resultChar: characterModel.results![index],
-                  );
-                }),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: BlocBuilder<CharactersBloc, CharactersState>(
+          builder: (context, state) {
+            if (state is LoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is LoadedCharactersState) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 2 / 3,
+                                crossAxisSpacing: 1,
+                                mainAxisSpacing: 1),
+                        shrinkWrap: true,
+                        physics: const ClampingScrollPhysics(),
+                        padding: EdgeInsets.zero,
+                        itemCount: state.characters.length,
+                        itemBuilder: (ctx, index) {
+                          return CharacterItem(
+                            resultChar: state.characters[index],
+                          );
+                        }),
+                  ],
+                ),
+              );
+            } else if (state is ErrorState) {
+              return Text(state.message.toString());
+            }
+            return const Center(child: CircularProgressIndicator());
+          },
         ),
       ),
     );

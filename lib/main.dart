@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rick_morty_bloc/app_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
 import 'package:rick_morty_bloc/presentation/screens/screens.dart';
+import 'core/constants/routes.dart';
 import 'core/theme/app_theme.dart';
+import 'injection_container.dart' as di;
 
-void main() {
+part 'app_router.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(RickAndMorty(
     appRouter: AppRouter(),
   ));
 }
 
 class RickAndMorty extends StatelessWidget {
-  const RickAndMorty({super.key, required this.appRouter});
-
   final AppRouter appRouter;
+
+  const RickAndMorty({super.key, required this.appRouter});
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +31,19 @@ class RickAndMorty extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Rick and Morty',
-      theme: appTheme,
-      onGenerateRoute: appRouter.generateRoute,
-      home: const CharactersScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (_) =>
+                di.sl<CharactersBloc>()..add(GetAllCharactersEvent())),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Rick and Morty',
+        theme: appTheme,
+        onGenerateRoute: appRouter.generateRoute,
+        home: const CharactersScreen(),
+      ),
     );
   }
 }

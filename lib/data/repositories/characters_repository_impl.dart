@@ -14,7 +14,7 @@ class CharactersRepositoryImpl implements CharactersRepository {
       {required this.charactersRemoteDataSource, required this.networkInfo});
 
   @override
-  Future<Either<Failure, List<ResultChar>>> getAllCharacters() async {
+  Future<Either<Failure, List<dynamic>>> getAllCharacters() async {
     if (await networkInfo.isConnected) {
       try {
         final remoteCharacters =

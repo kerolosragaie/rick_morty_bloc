@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:debug_logger/debug_logger.dart';
 import 'package:rick_morty_bloc/core/constants/api.dart';
 import 'package:rick_morty_bloc/core/errors/exception.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';

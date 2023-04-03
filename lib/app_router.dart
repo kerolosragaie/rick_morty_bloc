@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty_bloc/core/constants/strings.dart';
+import 'package:rick_morty_bloc/core/constants/routes.dart';
 import 'package:rick_morty_bloc/presentation/screens/screens.dart';
 
 class AppRouter {

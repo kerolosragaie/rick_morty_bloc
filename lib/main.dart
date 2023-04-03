@@ -32,7 +32,7 @@ class RickAndMorty extends StatelessWidget {
         secondaryHeaderColor: AppColors.secondary,
       ),
       onGenerateRoute: appRouter.generateRoute,
-      home: CharactersScreen(),
+      home: const CharactersScreen(),
     );
   }
 }

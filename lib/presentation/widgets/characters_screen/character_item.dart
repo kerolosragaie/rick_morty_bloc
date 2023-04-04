@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/loading_indicator.dart';
+import 'package:rick_morty_bloc/core/constants/routes.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';
 
-import '../../core/constants/app_colors.dart';
+import '../../../core/constants/app_colors.dart';
+import '../../../core/util/loading_indicator.dart';
 
 class CharacterItem extends StatelessWidget {
   final ResultChar resultChar;
@@ -18,7 +19,10 @@ class CharacterItem extends StatelessWidget {
       decoration: BoxDecoration(
           color: AppColors.secondary, borderRadius: BorderRadius.circular(8)),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, CHARACTERS_SCREEN_DETAILS,
+              arguments: {'character': resultChar});
+        },
         child: GridTile(
           footer: Container(
             width: double.infinity,
@@ -45,16 +49,9 @@ class CharacterItem extends StatelessWidget {
                   ? CachedNetworkImage(
                       fit: BoxFit.fill,
                       imageUrl: resultChar.image!,
-                      placeholder: (context, url) => const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: LoadingIndicator(
-                          indicatorType: Indicator.ballScaleMultiple,
-                          colors: [
-                            Color.fromRGBO(0, 138, 70, 1),
-                            Color.fromRGBO(137, 199, 74, 1),
-                            Color.fromRGBO(31, 172, 199, 1),
-                          ],
-                        ),
+                      placeholder: (context, url) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: LoadingIndicators.ballScale(),
                       ),
                       errorWidget: (context, url, error) => Image.asset(
                         "assets/images/error.gif",

@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
+import 'package:rick_morty_bloc/presentation/screens/character_details_screen.dart';
 import 'package:rick_morty_bloc/presentation/screens/screens.dart';
 import 'core/constants/routes.dart';
 import 'core/theme/app_theme.dart';
 import 'injection_container.dart' as di;
 
 part 'app_router.dart';
+
+//TODO: finish UI
+//TODO: 2 do episodes api
+//TODO: 3 do location api
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

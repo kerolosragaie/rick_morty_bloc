@@ -44,6 +44,7 @@ dependencies:
   http: ^0.13.5
   dio: ^5.1.1
   # Local cache
+  number_pagination: ^0.0.3+2
   shared_preferences: ^2.0.20
   flutter_bloc: ^8.1.2
   animated_text_kit: ^4.2.2

@@ -12,7 +12,7 @@ class LoadingIndicators {
           colors: [
             Color.fromRGBO(0, 138, 70, 1),
             Color.fromRGBO(137, 199, 74, 1),
-            Color.fromRGBO(31, 172, 199, 1),
+            Colors.grey,
           ],
         ),
       ),
@@ -28,7 +28,23 @@ class LoadingIndicators {
           colors: [
             Color.fromRGBO(0, 138, 70, 1),
             Color.fromRGBO(137, 199, 74, 1),
-            Color.fromRGBO(31, 172, 199, 1),
+            Colors.grey,
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget ballPulse() {
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: LoadingIndicator(
+          indicatorType: Indicator.ballPulse,
+          colors: [
+            Color.fromRGBO(0, 138, 70, 1),
+            Color.fromRGBO(137, 199, 74, 1),
+            Colors.grey,
           ],
         ),
       ),

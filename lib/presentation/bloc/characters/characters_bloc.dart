@@ -14,9 +14,9 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   CharactersBloc({required this.getCharctersUseCase})
       : super(CharactersInitial()) {
     on<CharactersEvent>((event, emit) async {
-      if (event is GetAllCharactersEvent || event is RefreshEvent) {
+      if (event is GetAllCharactersEvent) {
         emit(LoadingState());
-        final data = await getCharctersUseCase.call();
+        final data = await getCharctersUseCase.call(page: event.page);
         data.fold((failure) {
           emit(ErrorState(message: _mapFailureToMessage(failure)));
         }, (characters) {

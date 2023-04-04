@@ -6,6 +6,8 @@ import 'package:rick_morty_bloc/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:rick_morty_bloc/domain/repositories/characters_repository.dart';
 
+import '../models/character_model/info.dart';
+
 class CharactersRepositoryImpl implements CharactersRepository {
   final CharactersRemoteDataSource charactersRemoteDataSource;
   final NetworkInfo networkInfo;
@@ -14,11 +16,26 @@ class CharactersRepositoryImpl implements CharactersRepository {
       {required this.charactersRemoteDataSource, required this.networkInfo});
 
   @override
-  Future<Either<Failure, List<dynamic>>> getAllCharacters() async {
+  Future<Either<Failure, InfoChar>> getResult() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await charactersRemoteDataSource.getResult();
+        return Right(result);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(OfflineFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<dynamic>>> getAllCharacters(
+      {required int page}) async {
     if (await networkInfo.isConnected) {
       try {
         final remoteCharacters =
-            await charactersRemoteDataSource.getAllCharacters();
+            await charactersRemoteDataSource.getAllCharacters(page: page);
         return Right(remoteCharacters);
       } on ServerException {
         return Left(ServerFailure());

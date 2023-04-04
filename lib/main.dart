@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
+import 'package:rick_morty_bloc/presentation/bloc/pages_cubit/pages_cubit.dart';
 import 'package:rick_morty_bloc/presentation/screens/character_details_screen.dart';
 import 'package:rick_morty_bloc/presentation/screens/screens.dart';
 import 'core/constants/routes.dart';
@@ -39,8 +40,9 @@ class RickAndMorty extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (_) =>
-                di.sl<CharactersBloc>()..add(GetAllCharactersEvent())),
+            create: (_) => di.sl<CharactersBloc>()
+              ..add(const GetAllCharactersEvent(page: 0))),
+        BlocProvider(create: (_) => di.sl<PagesCubit>()..getPages()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -9,8 +9,8 @@ class GetCharctersUseCase {
 
   GetCharctersUseCase(this.charactersRepository);
 
-  Future<Either<Failure, List<dynamic>>> call() async {
-    return await charactersRepository.getAllCharacters();
+  Future<Either<Failure, List<dynamic>>> call({required int page}) async {
+    return await charactersRepository.getAllCharacters(page: page);
   }
 
   Future<Either<Failure, ResultChar>> getCharacter(int charId) async {

@@ -4,8 +4,10 @@ import 'package:rick_morty_bloc/data/datasources/characters_remote_data_source.d
 import 'package:rick_morty_bloc/data/repositories/characters_repository_impl.dart';
 import 'package:rick_morty_bloc/domain/repositories/characters_repository.dart';
 import 'package:rick_morty_bloc/domain/usecases/get_characters_usecase.dart';
+import 'package:rick_morty_bloc/domain/usecases/get_pages_usecase.dart';
 import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:rick_morty_bloc/presentation/bloc/pages_cubit/pages_cubit.dart';
 import 'core/network/network_info.dart';
 
 final sl = GetIt.instance;
@@ -13,10 +15,15 @@ final sl = GetIt.instance;
 Future<void> init() async {
 //! Features - Characters, Eposides, ...
 //Bloc
-  sl.registerFactory(() => CharactersBloc(getCharctersUseCase: sl()));
+  sl.registerFactory(() => CharactersBloc(
+        getCharctersUseCase: sl(),
+      ));
+
+  sl.registerFactory(() => PagesCubit(getPagesUseCase: sl()));
 
 //Usecases
   sl.registerLazySingleton(() => GetCharctersUseCase(sl()));
+  sl.registerLazySingleton(() => GetPagesUseCase(sl()));
 
 //Repository
   sl.registerLazySingleton<CharactersRepository>(() => CharactersRepositoryImpl(

@@ -13,8 +13,9 @@ class LoadingState extends CharactersState {}
 
 class LoadedCharactersState extends CharactersState {
   final List<dynamic> characters;
-
-  const LoadedCharactersState({required this.characters});
+  const LoadedCharactersState({
+    required this.characters,
+  });
   @override
   List<Object> get props => [characters];
 }

@@ -29,7 +29,7 @@ class _CharacterEposidesItemState extends State<CharacterEposidesItem> {
             Text(
               "Name: ${widget.resultEpisode.name}",
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.text,
                 fontWeight: FontWeight.w900,
               ),
               overflow: TextOverflow.ellipsis,
@@ -39,7 +39,7 @@ class _CharacterEposidesItemState extends State<CharacterEposidesItem> {
             Text(
               "Air date: ${widget.resultEpisode.airDate}",
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.text,
                 fontWeight: FontWeight.w500,
               ),
               overflow: TextOverflow.ellipsis,
@@ -49,7 +49,7 @@ class _CharacterEposidesItemState extends State<CharacterEposidesItem> {
             Text(
               "Episode: ${widget.resultEpisode.episode}",
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.text,
                 fontWeight: FontWeight.w500,
               ),
               overflow: TextOverflow.ellipsis,

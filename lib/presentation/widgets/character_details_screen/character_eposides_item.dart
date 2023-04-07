@@ -18,7 +18,7 @@ class _CharacterEposidesItemState extends State<CharacterEposidesItem> {
       child: Container(
         width: MediaQuery.of(context).size.width / 2.2,
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.primary),
+          border: Border.all(color: AppColors.text),
           borderRadius: BorderRadius.circular(20.0),
         ),
         padding: const EdgeInsets.all(6),

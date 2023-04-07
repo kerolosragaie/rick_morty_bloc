@@ -3,7 +3,7 @@ class ResultEpisode {
   String? name;
   String? airDate;
   String? episode;
-  List<String>? characters;
+  List<dynamic>? characters;
   String? url;
   DateTime? created;
 
@@ -22,7 +22,7 @@ class ResultEpisode {
         name: json['name'] as String?,
         airDate: json['air_date'] as String?,
         episode: json['episode'] as String?,
-        characters: json['characters'] as List<String>?,
+        characters: json['characters'] as List<dynamic>?,
         url: json['url'] as String?,
         created: json['created'] == null
             ? null

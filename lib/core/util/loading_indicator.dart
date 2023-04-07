@@ -50,4 +50,20 @@ class LoadingIndicators {
       ),
     );
   }
+
+  static Widget ballPulseSync() {
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: LoadingIndicator(
+          indicatorType: Indicator.ballPulseSync,
+          colors: [
+            Color.fromRGBO(0, 138, 70, 1),
+            Colors.black54,
+            Colors.white,
+          ],
+        ),
+      ),
+    );
+  }
 }

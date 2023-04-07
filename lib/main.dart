@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
+import 'package:rick_morty_bloc/presentation/bloc/eposides_cubit/eposides_cubit.dart';
 import 'package:rick_morty_bloc/presentation/bloc/pages_cubit/pages_cubit.dart';
 import 'package:rick_morty_bloc/presentation/screens/character_details_screen.dart';
 import 'package:rick_morty_bloc/presentation/screens/screens.dart';
@@ -11,8 +12,8 @@ import 'injection_container.dart' as di;
 
 part 'app_router.dart';
 
-//TODO: finish UI
-//TODO: 2 do episodes api
+//TODO: 2 finish UI Episodes
+//TODO: 1 do episodes api
 //TODO: 3 do location api
 
 void main() async {
@@ -43,6 +44,7 @@ class RickAndMorty extends StatelessWidget {
             create: (_) => di.sl<CharactersBloc>()
               ..add(const GetAllCharactersEvent(page: 0))),
         BlocProvider(create: (_) => di.sl<PagesCubit>()..getPages()),
+        BlocProvider(create: (_) => di.sl<EposidesCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

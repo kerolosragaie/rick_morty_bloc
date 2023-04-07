@@ -1,8 +1,8 @@
-import 'info.dart';
+import 'info_episode.dart';
 import 'result_episode.dart';
 
 class EpisodeModel {
-  Info? info;
+  InfoEpisode? info;
   List<ResultEpisode>? results;
 
   EpisodeModel({this.info, this.results});
@@ -10,7 +10,7 @@ class EpisodeModel {
   factory EpisodeModel.fromJson(Map<String, dynamic> json) => EpisodeModel(
         info: json['info'] == null
             ? null
-            : Info.fromJson(json['info'] as Map<String, dynamic>),
+            : InfoEpisode.fromJson(json['info'] as Map<String, dynamic>),
         results: (json['results'] as List<dynamic>?)
             ?.map((e) => ResultEpisode.fromJson(e as Map<String, dynamic>))
             .toList(),

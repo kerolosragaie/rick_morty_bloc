@@ -127,6 +127,15 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
         pinned: true,
         stretch: true,
         backgroundColor: AppColors.primary,
+        leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            tooltip: 'Click to Home Screen',
+            onPressed: () {
+              Navigator.pop(context);
+            }),
         flexibleSpace: FlexibleSpaceBar(
           centerTitle: true,
           title: Text(

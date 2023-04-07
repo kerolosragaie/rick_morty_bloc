@@ -12,10 +12,6 @@ import 'injection_container.dart' as di;
 
 part 'app_router.dart';
 
-//TODO: 2 finish UI Episodes
-//TODO: 1 do episodes api
-//TODO: 3 do location api
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();

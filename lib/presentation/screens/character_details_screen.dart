@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_bloc/core/constants/app_colors.dart';
 import 'package:rick_morty_bloc/core/util/loading_indicator.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';
-import 'package:rick_morty_bloc/data/models/episode_model/result_episode.dart';
 import 'package:rick_morty_bloc/presentation/bloc/eposides_cubit/eposides_cubit.dart';
 import 'package:rick_morty_bloc/presentation/widgets/character_details_screen/character_info.dart';
 import 'package:rick_morty_bloc/presentation/widgets/character_details_screen/divider_widget.dart';

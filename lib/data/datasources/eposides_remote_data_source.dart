@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rick_morty_bloc/data/models/episode_model/result_episode.dart';
 import '../../core/errors/exception.dart';
-import 'package:debug_logger/debug_logger.dart';
 
 abstract class EposidesRemoteDataSource {
   Future<List<ResultEpisode>> getAllEposides(List<String> eposides);

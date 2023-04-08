@@ -1,12 +1,12 @@
-class Info {
+class InfoLocation {
   int? count;
   int? pages;
   String? next;
   dynamic prev;
 
-  Info({this.count, this.pages, this.next, this.prev});
+  InfoLocation({this.count, this.pages, this.next, this.prev});
 
-  factory Info.fromJson(Map<String, dynamic> json) => Info(
+  factory InfoLocation.fromJson(Map<String, dynamic> json) => InfoLocation(
         count: json['count'] as int?,
         pages: json['pages'] as int?,
         next: json['next'] as String?,

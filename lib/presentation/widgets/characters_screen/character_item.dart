@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_morty_bloc/data/models/character_model/result_char.dart';
-import 'package:rick_morty_bloc/presentation/screens/character_details_screen.dart';
-
 import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/routes.dart';
 import '../../../core/util/loading_indicator.dart';
 
 class CharacterItem extends StatelessWidget {
@@ -20,11 +19,8 @@ class CharacterItem extends StatelessWidget {
           color: AppColors.secondary, borderRadius: BorderRadius.circular(8)),
       child: GestureDetector(
         onTap: () {
-          /*   Navigator.pushNamed(context, CHARACTERS_SCREEN_DETAILS,
-              arguments: {'character': resultChar});*/
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  CharacterDetailsScreen(args: {'character': resultChar})));
+          Navigator.pushNamed(context, CHARACTERS_SCREEN_DETAILS,
+              arguments: {'character': resultChar});
         },
         child: GridTile(
           footer: Container(

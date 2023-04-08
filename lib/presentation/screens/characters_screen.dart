@@ -1,31 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:number_pagination/number_pagination.dart';
-import 'package:rick_morty_bloc/core/constants/app_colors.dart';
 import 'package:rick_morty_bloc/core/util/loading_indicator.dart';
 import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
-import 'package:rick_morty_bloc/presentation/bloc/pages_cubit/pages_cubit.dart';
-
+import 'package:rick_morty_bloc/presentation/bloc/searching_cubit/searching_cubit.dart';
+import '../../data/models/character_model/result_char.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/characters_screen/character_list.dart';
+import '../widgets/characters_screen/number_pagination_widget.dart';
 import '../widgets/error_widget.dart';
 
-class CharactersScreen extends StatelessWidget {
+class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
 
   @override
+  State<CharactersScreen> createState() => _CharactersScreenState();
+}
+
+class _CharactersScreenState extends State<CharactersScreen> {
+  int pageNum = 0;
+  bool isSearching = false;
+  List<ResultChar> _allChars = [];
+  List<ResultChar> _resultChars = [];
+
+  @override
   Widget build(BuildContext context) {
-    int pageNum = 0;
     return Scaffold(
       appBar: AppbarWidget(
+        callBackSearch: (value) {
+          _resultChars = _runFilter(value);
+          BlocProvider.of<CharactersBloc>(context)
+              .add(GetAllCharactersEvent(page: pageNum));
+        },
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              isSearching = true;
+              BlocProvider.of<SearchingCubit>(context).call(isSearching);
+              isSearching = false;
+            },
           ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
+              _resultChars = [];
               BlocProvider.of<CharactersBloc>(context)
                   .add(GetAllCharactersEvent(page: pageNum));
             },
@@ -34,37 +52,11 @@ class CharactersScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 50,
-            width: double.infinity,
-            child: BlocBuilder<PagesCubit, PagesState>(
-              builder: (context, state) {
-                if (state is PagesLoaded) {
-                  return NumberPagination(
-                    onPageChanged: (int pageNumber) {
-                      pageNum = pageNumber;
-                      BlocProvider.of<CharactersBloc>(context)
-                          .add(GetAllCharactersEvent(page: pageNumber));
-                    },
-                    threshold: 4,
-                    pageTotal: state.pages,
-                    pageInit: 1,
-                    colorPrimary: Colors.white,
-                    colorSub: AppColors.secondary,
-                  );
-                } else if (state is ErrorPagesState) {
-                  return NumberPagination(
-                    onPageChanged: (int pageNumber) {},
-                    threshold: 4,
-                    pageTotal: 1,
-                    pageInit: 1,
-                    colorPrimary: Colors.white,
-                    colorSub: AppColors.secondary,
-                  );
-                }
-                return LoadingIndicators.ballPulse();
-              },
-            ),
+          NumberPaginationWidget(
+            funct: (pageNumber) {
+              pageNum = pageNumber;
+              _resultChars = [];
+            },
           ),
           Expanded(
             child: Padding(
@@ -75,7 +67,12 @@ class CharactersScreen extends StatelessWidget {
                     return LoadingIndicators.ballSpinFadeLoader(
                         context: context);
                   } else if (state is LoadedCharactersState) {
-                    return CharactersList(characters: state.characters);
+                    _allChars = List.from(state.characters);
+                    if (_resultChars.isNotEmpty) {
+                      return CharactersList(characters: _resultChars);
+                    } else {
+                      return CharactersList(characters: state.characters);
+                    }
                   } else if (state is ErrorState) {
                     return ErrorGifWidget(
                       message: state.message,
@@ -89,5 +86,20 @@ class CharactersScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  List<ResultChar> _runFilter(String enteredKeyword) {
+    List<ResultChar> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = _allChars;
+    } else {
+      results = _allChars
+          .where((char) => char.name
+              .toString()
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+    return results;
   }
 }

@@ -24,6 +24,7 @@ class CharacterDetailsScreen extends StatefulWidget {
 class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
   late ResultChar character;
   late String allEpisodesValue;
+
   @override
   void initState() {
     character = widget.args['character'] as ResultChar;
@@ -123,32 +124,32 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
 
   Widget buildSliverAppBar() {
     return SliverAppBar(
-        expandedHeight: 500.0,
-        pinned: true,
-        stretch: true,
-        backgroundColor: AppColors.primary,
-        leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            tooltip: 'Click to Home Screen',
-            onPressed: () {
-              Navigator.pop(context);
-            }),
-        flexibleSpace: FlexibleSpaceBar(
-          centerTitle: true,
-          title: Text(
-            character.name!,
-            style: const TextStyle(color: AppColors.text),
+      expandedHeight: 500.0,
+      pinned: true,
+      stretch: true,
+      backgroundColor: AppColors.primary,
+      leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
           ),
-          background: Hero(
-            tag: character.id!,
-            child: Image.network(
-              character.image!,
-              fit: BoxFit.cover,
-            ),
+          onPressed: () {
+            Navigator.pop(context);
+          }),
+      flexibleSpace: FlexibleSpaceBar(
+        centerTitle: true,
+        title: Text(
+          character.name!,
+          style: const TextStyle(color: AppColors.text),
+        ),
+        background: Hero(
+          tag: character.id!,
+          child: Image.network(
+            character.image!,
+            fit: BoxFit.cover,
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

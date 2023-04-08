@@ -12,6 +12,7 @@ import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dar
 import 'package:http/http.dart' as http;
 import 'package:rick_morty_bloc/presentation/bloc/eposides_cubit/eposides_cubit.dart';
 import 'package:rick_morty_bloc/presentation/bloc/pages_cubit/pages_cubit.dart';
+import 'package:rick_morty_bloc/presentation/bloc/searching_cubit/searching_cubit.dart';
 import 'core/network/network_info.dart';
 import 'data/repositories/eposides_repository_impl.dart';
 
@@ -26,6 +27,7 @@ Future<void> init() async {
 
   sl.registerFactory(() => PagesCubit(getPagesUseCase: sl()));
   sl.registerFactory(() => EposidesCubit(getEposidesUsecase: sl()));
+  sl.registerFactory(() => SearchingCubit());
 
 //Usecases
   sl.registerLazySingleton(() => GetCharctersUseCase(sl()));

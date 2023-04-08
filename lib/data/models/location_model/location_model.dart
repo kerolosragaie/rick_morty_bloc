@@ -1,8 +1,8 @@
-import 'info.dart';
+import 'info_location.dart';
 import 'result_location.dart';
 
 class LocationModel {
-  Info? info;
+  InfoLocation? info;
   List<ResultLocation>? results;
 
   LocationModel({this.info, this.results});
@@ -10,7 +10,7 @@ class LocationModel {
   factory LocationModel.fromJson(Map<String, dynamic> json) => LocationModel(
         info: json['info'] == null
             ? null
-            : Info.fromJson(json['info'] as Map<String, dynamic>),
+            : InfoLocation.fromJson(json['info'] as Map<String, dynamic>),
         results: (json['results'] as List<dynamic>?)
             ?.map((e) => ResultLocation.fromJson(e as Map<String, dynamic>))
             .toList(),

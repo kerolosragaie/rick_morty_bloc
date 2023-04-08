@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
 import 'package:rick_morty_bloc/presentation/bloc/eposides_cubit/eposides_cubit.dart';
 import 'package:rick_morty_bloc/presentation/bloc/pages_cubit/pages_cubit.dart';
+import 'package:rick_morty_bloc/presentation/bloc/searching_cubit/searching_cubit.dart';
 import 'package:rick_morty_bloc/presentation/screens/character_details_screen.dart';
 import 'package:rick_morty_bloc/presentation/screens/screens.dart';
 import 'core/constants/routes.dart';
@@ -41,6 +42,7 @@ class RickAndMorty extends StatelessWidget {
               ..add(const GetAllCharactersEvent(page: 0))),
         BlocProvider(create: (_) => di.sl<PagesCubit>()..getPages()),
         BlocProvider(create: (_) => di.sl<EposidesCubit>()),
+        BlocProvider(create: (_) => di.sl<SearchingCubit>()..call(false)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -10,6 +10,7 @@ class PagesCubit extends Cubit<PagesState> {
   PagesCubit({required this.getPagesUseCase}) : super(PagesInitial());
 
   Future<void> getPages() async {
+    emit(PagesLoading());
     final data = await getPagesUseCase.call();
     data.fold((failure) {
       emit(ErrorPagesState(

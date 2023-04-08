@@ -17,7 +17,9 @@ class NumberPaginationWidget extends StatelessWidget {
       width: double.infinity,
       child: BlocBuilder<PagesCubit, PagesState>(
         builder: (context, state) {
-          if (state is PagesLoaded) {
+          if (state is PagesLoading) {
+            return LoadingIndicators.ballPulse();
+          } else if (state is PagesLoaded) {
             return NumberPagination(
               onPageChanged: (int pageNumber) {
                 funct(pageNumber);

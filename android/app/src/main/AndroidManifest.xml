@@ -2,9 +2,9 @@
     package="com.kerollosragaie.rick_morty_bloc">
     <uses-permission android:name="android.permission.INTERNET"/> 
    <application
-        android:label="rick_morty_bloc"
+        android:label="Rick and Morty"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

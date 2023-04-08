@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_bloc/core/util/loading_indicator.dart';
 import 'package:rick_morty_bloc/presentation/bloc/characters/characters_bloc.dart';
+import 'package:rick_morty_bloc/presentation/bloc/pages_cubit/pages_cubit.dart';
 import 'package:rick_morty_bloc/presentation/bloc/searching_cubit/searching_cubit.dart';
 import '../../data/models/character_model/result_char.dart';
 import '../widgets/app_bar.dart';
@@ -42,10 +43,14 @@ class _CharactersScreenState extends State<CharactersScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: () {
+            onPressed: () async {
               _resultChars = [];
               BlocProvider.of<CharactersBloc>(context)
                   .add(GetAllCharactersEvent(page: _pageNum));
+              if (_allChars.isEmpty) {
+                _pageNum = 0;
+                BlocProvider.of<PagesCubit>(context).getPages();
+              }
             },
           ),
         ],
@@ -74,6 +79,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
                       return CharactersList(characters: state.characters);
                     }
                   } else if (state is ErrorState) {
+                    _allChars = [];
                     return ErrorGifWidget(
                       message: state.message,
                     );

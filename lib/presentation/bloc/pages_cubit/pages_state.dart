@@ -15,6 +15,8 @@ class PagesLoaded extends PagesState {
   const PagesLoaded({required this.pages});
 }
 
+class PagesLoading extends PagesState {}
+
 class ErrorPagesState extends PagesState {
   final String message;
 

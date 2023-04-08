@@ -42,7 +42,6 @@ dependencies:
   # Remote API
   internet_connection_checker: ^1.0.0+1
   http: ^0.13.5
-  dio: ^5.1.1
   # Local cache
   number_pagination: ^0.0.3+2
   shared_preferences: ^2.0.20

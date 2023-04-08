@@ -22,7 +22,6 @@ class ErrorGifWidget extends StatelessWidget {
           top: MediaQuery.of(context).size.height / 1.5,
           left: MediaQuery.of(context).size.height / 8,
           child: SizedBox(
-            height: 80,
             width: 240,
             child: Text(
               message,

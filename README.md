@@ -1,6 +1,6 @@
 # rick_morty_bloc
 
-A new Flutter project uses https://rickandmortyapi.com/documentation/ API, Bloc, html, dio etc..
+A new Flutter project uses https://rickandmortyapi.com/documentation/ API, Bloc, Cubit, html etc..
 
 ## Getting Started
 

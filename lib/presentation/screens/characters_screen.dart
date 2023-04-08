@@ -17,8 +17,8 @@ class CharactersScreen extends StatefulWidget {
 }
 
 class _CharactersScreenState extends State<CharactersScreen> {
-  int pageNum = 0;
-  bool isSearching = false;
+  int _pageNum = 0;
+  bool _isSearching = false;
   List<ResultChar> _allChars = [];
   List<ResultChar> _resultChars = [];
 
@@ -29,15 +29,15 @@ class _CharactersScreenState extends State<CharactersScreen> {
         callBackSearch: (value) {
           _resultChars = _runFilter(value);
           BlocProvider.of<CharactersBloc>(context)
-              .add(GetAllCharactersEvent(page: pageNum));
+              .add(GetAllCharactersEvent(page: _pageNum));
         },
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              isSearching = true;
-              BlocProvider.of<SearchingCubit>(context).call(isSearching);
-              isSearching = false;
+              _isSearching = true;
+              BlocProvider.of<SearchingCubit>(context).call(_isSearching);
+              _isSearching = false;
             },
           ),
           IconButton(
@@ -45,7 +45,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
             onPressed: () {
               _resultChars = [];
               BlocProvider.of<CharactersBloc>(context)
-                  .add(GetAllCharactersEvent(page: pageNum));
+                  .add(GetAllCharactersEvent(page: _pageNum));
             },
           ),
         ],
@@ -54,7 +54,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
         children: [
           NumberPaginationWidget(
             funct: (pageNumber) {
-              pageNum = pageNumber;
+              _pageNum = pageNumber;
               _resultChars = [];
             },
           ),

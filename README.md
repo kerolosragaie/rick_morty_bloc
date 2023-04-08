@@ -1,16 +1,23 @@
-# rick_morty_bloc
+<p align="center">
+    <img src="assets/icons/logo.png" width="300" height="300">
+</p>
 
-A new Flutter project uses https://rickandmortyapi.com/documentation/ API, Bloc, Cubit, html etc..
+[![Linkedin: kerollosragaie](https://img.shields.io/badge/-kerollosragaie-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/kerollos-ragaie-youssef-b9529aa6/)](https://www.linkedin.com/in/kerollos-ragaie/)
+[![GitHub Kerollos Ragaie](https://img.shields.io/github/followers/kerolosragaie?label=follow&style=social)](https://github.com/kerolosragaie)
 
-## Getting Started
+# ℹ️ Overview
+- Used Flutter with BLoC pattern and Clean architecture to show some information about my favorite series Rick and Morty. 
+- Played with some fancy UI widgets.
 
-This project is a starting point for a Flutter application.
+# 📌 Used API
 
-A few resources to get you started if this is your first Flutter project:
+- Free API : https://rickandmortyapi.com/
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# 📱 Screens
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="assets/gifs/gif_1.gif" width="340" height="560"/>
+
+<img src="assets/gifs/gif_2.gif" width="340" height="560"/>
+
+<img src="assets/gifs/gif_3.gif" width="340" height="560"/>
+
